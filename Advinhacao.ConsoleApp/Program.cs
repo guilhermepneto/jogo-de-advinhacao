@@ -1,4 +1,6 @@
-﻿// JOGO DE ADVINHAÇÃO
+﻿using System.Security.Cryptography;
+
+// JOGO DE ADVINHAÇÃO
 
 
 Console.WriteLine("------------------------------");
@@ -10,6 +12,9 @@ Console.WriteLine();
 Console.Write("Digite um número: ");
 string strnumdig = Console.ReadLine();
 
-Console.WriteLine("O número digitado foi: " + strnumdig);
+
+int numaleatorio = RandomNumberGenerator.GetInt32(1, 21);
+
+Console.WriteLine("O número aleatório foi: " + numaleatorio);
 
 Console.ReadLine();
