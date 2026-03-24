@@ -2,7 +2,6 @@
 
 // JOGO DE ADVINHAÇÃO
 
-int numaleatorio = RandomNumberGenerator.GetInt32(1, 21);
 bool continuar = true;
 
 while (continuar == true)
@@ -11,26 +10,75 @@ while (continuar == true)
     Console.WriteLine("------------------------------");
     Console.WriteLine("JOGO DE ADVINHAÇÃO");
     Console.WriteLine("------------------------------");
+    Console.WriteLine("Selecione o nível de dificuldade desejado:");
+    Console.WriteLine("------------------------------");
+    Console.WriteLine("1 - FÁCIL (10 Tentativas)");
+    Console.WriteLine("2 - MÉDIO (5 Tentativas)");
+    Console.WriteLine("3 - DIFÍCIL (3 Tentativas)");
+    Console.WriteLine("------------------------------");
 
-    Console.WriteLine();
-    Console.Write("Digite um número: ");
-    int numdig = Convert.ToInt32(Console.ReadLine());
+    Console.Write("Digite sua escolha: ");
+    string nivel = Console.ReadLine();
 
+    int numaleatorio;
+    int tentativasMax;
 
-    if (numdig == numaleatorio)
+    switch (nivel)
     {
-        Console.WriteLine("Muito bem. Você acertou o número secreto, que era: " + numaleatorio);
-    }
-    else if (numdig > numaleatorio)
-    {
-        Console.WriteLine("O número que você digitou é maior que o número secreto");
-    }
-    else
-    {
-        Console.WriteLine("O número que você digitou é menor que o número secreto");
+        case "1":
+            numaleatorio = RandomNumberGenerator.GetInt32(1, 21);
+            tentativasMax = 10;
+            break;
+
+        case "2":
+            numaleatorio = RandomNumberGenerator.GetInt32(1, 51);
+            tentativasMax = 5;
+            break;
+
+        case "3":
+            numaleatorio = RandomNumberGenerator.GetInt32(1, 101);
+            tentativasMax = 3;
+            break;
+
+        default:
+            Console.WriteLine("------------------------------");
+            Console.WriteLine("Inválido, por favor selecione uma dificuldade entre 1 e 3!");
+            Console.Write("Pressione ENTER para prosseguir.");
+            Console.ReadLine();
+            continue;
     }
 
-    Console.WriteLine();
+    for (int tentativaAtual = 1; tentativaAtual <= tentativasMax; tentativaAtual++)
+    {
+        Console.Clear();
+        Console.WriteLine("------------------------------");
+        Console.WriteLine("JOGO DE ADVINHAÇÃO");
+        Console.WriteLine("------------------------------");
+        Console.WriteLine($"Tentativa {tentativaAtual} de {tentativasMax}");
+        Console.WriteLine("------------------------------");
+
+        Console.Write("Digite um número: ");
+        int numdig = Convert.ToInt32(Console.ReadLine());
+
+
+        if (numdig == numaleatorio)
+        {
+            Console.WriteLine("Muito bem. Você acertou o número secreto, que era: " + numaleatorio);
+            break;
+        }
+        else if (numdig > numaleatorio)
+        {
+            Console.WriteLine("O número que você digitou é maior que o número secreto");
+        }
+        else
+        {
+            Console.WriteLine("O número que você digitou é menor que o número secreto");
+        }
+
+        Console.WriteLine("Pressione ENTER para continuar");
+        Console.ReadLine();
+    }
+
     Console.Write("Pressione S para continuar ou N para sair: ");
     string opcaocont = Console.ReadLine();
 
