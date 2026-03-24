@@ -50,7 +50,7 @@ while (continuar == true)
 
     int[] numDigitados = new int[tentativasMax];
     int contadorNumDig = 0;
-
+    int pontuacao = 1000;
 
     for (int tentativaAtual = 1; tentativaAtual <= tentativasMax; tentativaAtual++)
     {
@@ -113,6 +113,22 @@ while (continuar == true)
             Console.WriteLine("O número que você digitou é menor que o número secreto");
         }
 
+        int difnumerica = Math.Abs(numaleatorio - numdig);
+
+        if (difnumerica >= 10)
+        {
+            pontuacao -= 100;
+        }
+        else if (difnumerica >= 5)
+        {
+            pontuacao -= 50;
+        }
+        else
+        {
+            pontuacao -= 20;
+        }
+
+        Console.WriteLine("Sua pontuação é: " + pontuacao);
         Console.WriteLine("Pressione ENTER para continuar");
         Console.ReadLine();
     }
