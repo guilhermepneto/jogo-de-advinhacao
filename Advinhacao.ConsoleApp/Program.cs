@@ -3,9 +3,9 @@
 // JOGO DE ADVINHAÇÃO
 
 int numaleatorio = RandomNumberGenerator.GetInt32(1, 21);
-bool cont = true;
+bool continuar = true;
 
-while (cont == true)
+while (continuar == true)
 {
     Console.Clear();
     Console.WriteLine("------------------------------");
@@ -36,7 +36,7 @@ while (cont == true)
 
     if (opcaocont != "S" && opcaocont != "s")
     {
-        cont = false;
+        continuar = false;
     }
 
     Console.ReadLine();
