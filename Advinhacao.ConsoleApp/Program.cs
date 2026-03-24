@@ -48,6 +48,10 @@ while (continuar == true)
             continue;
     }
 
+    int[] numDigitados = new int[tentativasMax];
+    int contadorNumDig = 0;
+
+
     for (int tentativaAtual = 1; tentativaAtual <= tentativasMax; tentativaAtual++)
     {
         Console.Clear();
@@ -59,6 +63,40 @@ while (continuar == true)
 
         Console.Write("Digite um número: ");
         int numdig = Convert.ToInt32(Console.ReadLine());
+
+        bool numrepetido = false;
+
+        for (int indiceAtual = 0; indiceAtual < numDigitados.Length; indiceAtual++)
+        {
+            if (numDigitados[indiceAtual] == numdig)
+            {
+                numrepetido = true;
+                break;
+            }
+        }
+
+        if (numrepetido == true)
+        {
+            Console.WriteLine("Esse número já foi usado, tente novamente");
+            Console.Write("Pressione ENTER para prosseguir");
+            Console.ReadLine();
+
+            tentativaAtual--;
+            continue;
+        }
+        if (contadorNumDig < numDigitados.Length)
+        {
+            numDigitados[contadorNumDig] = numdig;
+            contadorNumDig++;
+        }
+        else
+        {
+            numDigitados = new int[tentativasMax];
+            contadorNumDig = 0;
+
+            numDigitados[contadorNumDig] = numdig;
+            contadorNumDig++;
+        }
 
 
         if (numdig == numaleatorio)
